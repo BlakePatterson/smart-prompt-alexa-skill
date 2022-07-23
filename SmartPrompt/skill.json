@@ -1,0 +1,106 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "A simple skill to create smart reminders",
+          "examplePhrases": [
+            "Alexa open smart prompt",
+            "Alexa, tell smart prompt to create a reminder",
+            "Alexa, tell smart prompt to create a reminder on Monday at noon"
+          ],
+          "keywords": [
+            "Smart",
+            "Reminder",
+            "Task"
+          ],
+          "name": "Smart Prompt",
+          "description": "A simple skill to create smart reminders",
+          "smallIconUri": "file://assets/images/en-US_smallIconUri.png",
+          "updatesDescription": "Create Reminders \u0026 record them as complete when they go off.",
+          "largeIconUri": "file://assets/images/en-US_largeIconUri.png"
+        }
+      },
+      "automaticDistribution": {
+        "isActive": false
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "Sample Testing Instructions.",
+      "category": "CALENDARS_AND_REMINDERS",
+      "distributionMode": "PUBLIC",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "uri": "arn:aws:lambda:us-east-1:432781108448:function:f1b807a6-65ce-4085-b1ee-842f3c139032:Release_0"
+        },
+        "interfaces": [],
+        "regions": {
+          "EU": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:eu-west-1:432781108448:function:f1b807a6-65ce-4085-b1ee-842f3c139032:Release_0"
+            }
+          },
+          "NA": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-east-1:432781108448:function:f1b807a6-65ce-4085-b1ee-842f3c139032:Release_0"
+            }
+          },
+          "FE": {
+            "endpoint": {
+              "uri": "arn:aws:lambda:us-west-2:432781108448:function:f1b807a6-65ce-4085-b1ee-842f3c139032:Release_0"
+            }
+          }
+        }
+      }
+    },
+    "manifestVersion": "1.0",
+    "permissions": [
+      {
+        "name": "alexa::profile:given_name:read"
+      },
+      {
+        "name": "alexa::alerts:reminders:skill:readwrite"
+      }
+    ],
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "locales": {
+        "en-US": {
+          "termsOfUseUrl": "https://github.com/BlakePatterson/smart-prompt-alexa-skill",
+          "privacyPolicyUrl": "https://github.com/BlakePatterson/smart-prompt-alexa-skill"
+        }
+      },
+      "containsAds": false,
+      "isExportCompliant": true,
+      "isChildDirected": false,
+      "shoppingKit": {
+        "isShoppingActionsEnabled": false
+      },
+      "usesPersonalInfo": true
+    },
+    "events": {
+      "endpoint": {
+        "uri": "arn:aws:lambda:us-east-1:432781108448:function:f1b807a6-65ce-4085-b1ee-842f3c139032:Release_0"
+      },
+      "subscriptions": [
+        {
+          "eventName": "REMINDER_STARTED"
+        },
+        {
+          "eventName": "REMINDER_CREATED"
+        },
+        {
+          "eventName": "REMINDER_DELETED"
+        },
+        {
+          "eventName": "REMINDER_UPDATED"
+        },
+        {
+          "eventName": "REMINDER_STATUS_CHANGED"
+        }
+      ]
+    }
+  }
+}

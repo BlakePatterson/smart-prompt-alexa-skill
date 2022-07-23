@@ -1,0 +1,290 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "smart prompt",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "HelloWorldIntent",
+          "slots": [],
+          "samples": [
+            "hello",
+            "how are you",
+            "say hi world",
+            "say hi",
+            "hi",
+            "say hello world",
+            "say hello"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "CreateReminderIntent",
+          "slots": [
+            {
+              "name": "reminderDay",
+              "type": "AMAZON.DayOfWeek",
+              "samples": [
+                "On {reminderDay} please",
+                "Remind me on {reminderDay} please",
+                "{reminderDay}  please",
+                "{reminderDay}",
+                "On {reminderDay}",
+                "Remind me on {reminderDay}"
+              ]
+            },
+            {
+              "name": "reminderTime",
+              "type": "AMAZON.TIME",
+              "samples": [
+                "do it at {reminderTime} please",
+                "do it at {reminderTime} ",
+                "at {reminderTime} please",
+                "{reminderTime}",
+                "at {reminderTime}",
+                "Please remind me at {reminderTime}",
+                "Remind me at {reminderTime} please",
+                "Remind me at {reminderTime}"
+              ]
+            },
+            {
+              "name": "reminderMessage",
+              "type": "AMAZON.SearchQuery",
+              "samples": [
+                "remind me of {reminderMessage}",
+                "tell me to {reminderMessage}",
+                "to {reminderMessage}",
+                "remind me to {reminderMessage}",
+                "{reminderMessage}"
+              ]
+            }
+          ],
+          "samples": [
+            "i want to set a reminder",
+            "can you set a reminder",
+            "remind me to {reminderMessage}",
+            "i want to set up a reminder",
+            "Make a reminder at {reminderTime}",
+            "Make a reminder on {reminderDay}",
+            "Make a reminder",
+            "Make a new reminder",
+            "Create a reminder at {reminderTime}",
+            "Create a reminder on {reminderDay}",
+            "Create a reminder",
+            "Create a new reminder",
+            "Please remind me at {reminderTime} on {reminderDay}",
+            "Can you remind me on {reminderDay} at {reminderTime}",
+            "Can you remind me at {reminderTime} on {reminderDay}",
+            "Would you remind me on {reminderDay} at {reminderTime}",
+            "Would you remind me at {reminderTime} on {reminderDay}",
+            "I want you to remind me on {reminderDay} at {reminderTime}",
+            "I want you to remind me at {reminderTime} on {reminderDay}",
+            "Set me a new reminder at {reminderTime} on {reminderDay}",
+            "Set me a reminder at {reminderTime} on {reminderDay}",
+            "Set a new reminder at {reminderTime} on {reminderDay}",
+            "Set a reminder at {reminderTime} on {reminderDay}",
+            "Make me a new reminder at {reminderTime} on {reminderDay}",
+            "Make me a reminder at {reminderTime} on {reminderDay}",
+            "Make a new reminder at {reminderTime} on {reminderDay}",
+            "Make a reminder at {reminderTime} on {reminderDay}",
+            "Create me a new reminder at {reminderTime} on {reminderDay}",
+            "Create me a reminder at {reminderTime} on {reminderDay}",
+            "Create a new reminder at {reminderTime} on {reminderDay}",
+            "Create a reminder at {reminderTime} on {reminderDay}",
+            "Remind me at {reminderTime} on {reminderDay}",
+            "Remind me on {reminderDay} at {reminderTime}",
+            "Create me a new reminder for {reminderDay} at {reminderTime}",
+            "Create me a reminder for {reminderDay} at {reminderTime}",
+            "Make me a new reminder for {reminderDay} at {reminderTime}",
+            "Make me a reminder for {reminderDay} at {reminderTime}",
+            "Set me a new reminder for {reminderDay} at {reminderTime}",
+            "Set me a reminder for {reminderDay} at {reminderTime}",
+            "Set a new reminder for {reminderDay} at {reminderTime}",
+            "Set a reminder for {reminderDay} at {reminderTime}",
+            "Make a new reminder for {reminderDay} at {reminderTime}",
+            "Create a new reminder for {reminderDay} at {reminderTime}",
+            "Make a reminder for {reminderDay} at {reminderTime}",
+            "Create a reminder for {reminderDay} at {reminderTime}"
+          ]
+        },
+        {
+          "name": "CompletedReminderIntent",
+          "slots": [
+            {
+              "name": "reminderSubject",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "{reminderSubject} is done",
+            "The task is finished",
+            "The task is completed",
+            "The task is done",
+            "{reminderSubject} is completed",
+            "that\u0027s completed",
+            "that is completed",
+            "I completed what you reminded me to do",
+            "I completed that reminder",
+            "I completed what you just reminded me of",
+            "I completed {reminderSubject}",
+            "I completed doing that",
+            "I completed doing it",
+            "I completed the task",
+            "I completed the reminder",
+            "{reminderSubject} is finished",
+            "that\u0027s finished",
+            "that is finished",
+            "I finished what you reminded me to do",
+            "I finished that reminder",
+            "I finished what you just reminded me of",
+            "I finished {reminderSubject}",
+            "I finished doing that",
+            "I finished doing it",
+            "I finished the task",
+            "I finished the reminder"
+          ]
+        }
+      ],
+      "types": []
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "CreateReminderIntent",
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.1622324143287"
+          },
+          "slots": [
+            {
+              "name": "reminderDay",
+              "type": "AMAZON.DayOfWeek",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1622324143287.1513170424436"
+              }
+            },
+            {
+              "name": "reminderTime",
+              "type": "AMAZON.TIME",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1622324143287.1410857709218"
+              }
+            },
+            {
+              "name": "reminderMessage",
+              "type": "AMAZON.SearchQuery",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1440013148724.802948634818"
+              }
+            }
+          ],
+          "delegationStrategy": "ALWAYS"
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.1622324143287.1513170424436",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "On what day do you want me to remind you?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Which day of the week do you want to be reminded?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What day do you want me to remind you on?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What day of the week would you like me to remind you?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.1622324143287",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "So you want me to remind you on {reminderDay} at {reminderTime} to {reminderMessage} ?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1622324143287.1410857709218",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "What time do you want me to remind you at?"
+          },
+          {
+            "type": "PlainText",
+            "value": "At what time would you like to be reminded?"
+          },
+          {
+            "type": "PlainText",
+            "value": "When did you want to be reminded?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What time would you like to be reminded?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1440013148724.802948634818",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Of what would you like me to remind you?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What would you like me to remind you to do?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What would you like me to remind you of?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What is this reminder for?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What should this reminder say?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "16"
+}
