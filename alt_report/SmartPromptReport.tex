@@ -1,30 +1,37 @@
-\documentclass[conference]{IEEEtran}
-\usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{algorithmic}
+\documentclass[11pt, oneside]{article}
+\usepackage{geometry}
+\geometry{letterpaper}
 \usepackage{graphicx}
-\usepackage{textcomp}
-\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+
 \begin{document}
-
 \title{Smart Prompt}
-
-\author{
-\IEEEauthorblockN{Blake Patterson}
-\IEEEauthorblockA{\textit{Temple University} \\
-\textit{College of Science \& Technology}\\
-Philadelphia, USA \\
-tui02345@temple.edu}
-}
-
+\author{Blake Patterson}
+\date{August 1, 2022}
 \maketitle
 
 \begin{abstract}
 Smart Prompt is an Alexa Skill aimed at helping those with memory issues keep better track of their daily/weekly tasks that they may otherwise forget to complete. 
 It also keeps a record of those tasks and their completion times to better inform the individual and/or caregivers of how often the individual completes their tasks as well as how long it takes them. 
 \end{abstract}
+
+\pagenumbering{roman}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
 
 \section{Introduction}
 
@@ -109,7 +116,7 @@ Once the permissions are granted, every proceeding launch request will skip stra
 
 Here is what the launch request looks like:
 \begin{center}
-  \includegraphics[width=\linewidth]{images/launchRequest.jpg}
+  \includegraphics[width=\linewidth * 3/4]{images/launchRequest.jpg}
 \end{center}
 
 \subsubsection{Create Reminder Intent}
@@ -136,21 +143,29 @@ If for whatever reason this fails at any point (considering it is an API request
 
 Here is one example of how to create a reminder:
 \begin{center}
-  \includegraphics[width=\linewidth]{images/createReminder1a.jpg}
+  \includegraphics[width=\linewidth * 3/4]{images/createReminder1a.jpg}
 \end{center}
 \begin{center}
-  \includegraphics[width=\linewidth]{images/createReminder1b.jpg}
+  \includegraphics[width=\linewidth * 3/4]{images/createReminder1b.jpg}
 \end{center}
 \begin{center}
-  \includegraphics[width=\linewidth]{images/createReminder1c.jpg}
+  \includegraphics[width=\linewidth * 3/4]{images/createReminder1c.jpg}
 \end{center}
 
 Here is another example where the user provides more detail from the very beginning:
 \begin{center}
-  \includegraphics[width=\linewidth]{images/createReminder2a.jpg}
+  \includegraphics[width=\linewidth * 3/4]{images/createReminder2a.jpg}
 \end{center}
 \begin{center}
-  \includegraphics[width=\linewidth]{images/createReminder2b.jpg}
+  \includegraphics[width=\linewidth * 3/4]{images/createReminder2b.jpg}
+\end{center}
+
+Finally, here is an example of the user phrasing the request in a completely different way:
+\begin{center}
+  \includegraphics[width=\linewidth * 3/4]{images/createReminder3a.jpg}
+\end{center}
+\begin{center}
+  \includegraphics[width=\linewidth * 3/4]{images/createReminder3b.jpg}
 \end{center}
 
 \subsubsection{Completed Reminder Intent}
@@ -163,6 +178,16 @@ Then it performs some read \& write operations in order to record the task as co
 Finally, it clears the pending reminder and checks if the reminder completed has an audio file saved. 
 If it does, it plays the audio file. 
 Otherwise it simply notifies the user that the reminder has been recorded as complete. 
+
+Here is an example of the user completing a reminder:
+\begin{center}
+  \includegraphics[width=\linewidth * 3/4]{images/completedReminder1.jpg}
+\end{center}
+
+Here is an example of the user attempting to complete a reminder when there is nothing to complete:
+\begin{center}
+  \includegraphics[width=\linewidth * 3/4]{images/completedReminder2.jpg}
+\end{center}
 
 \subsubsection{Reminder Started Event}
 
@@ -268,5 +293,6 @@ provide usage \& testing instructions (write out high level testing procedures, 
 \begin{thebibliography}{00}
 \bibitem{b1} reference
 \end{thebibliography}
+
 
 \end{document}
