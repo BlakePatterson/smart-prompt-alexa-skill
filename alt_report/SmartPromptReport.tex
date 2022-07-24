@@ -35,7 +35,7 @@ It also keeps a record of those tasks and their completion times to better infor
 
 \section{Introduction}
 
-A very large percentage of people over the age of 65 have age related memory ailments such as dementia.
+In 2002 in the US, as many as 3.4 million people above the age of 71 had dementia \cite{b1}. 
 Not only are there no effective treatments for these impairments, but the number is not going down either. 
 Due to this, many older adults are finding themselves unable to complete their basic tasks such as exercising, taking medicine, walking the dog, etc.
 However, it is often not the case that they are physically and/or mentally unable to complete these tasks, it is simply a matter of forgetting about them. 
@@ -57,7 +57,32 @@ For the remainder of this paper we will examine existing solutions to this probl
 
 \section{Related Work}
 
-related work
+\subsection{Remembranza Pills}
+Remembranza Pills \cite{b2} is very similar to Smart Prompt in that it is an Alexa Skill built to help elderly patients remember to take their medicine. 
+It works in three main stages: 
+\begin{enumerate}
+  \item A Doctor or caregiver adds all the necessary details of a patient's medication(s) via the connected web app, storing all of the information on the internet.
+  \item The patient communicates with the Alexa Skill throughout the day in order to determine what medications to take at which times. This happens via the patient directly asking Alexa what medication to take, the skill does not remind the user automatically. The Alexa Skill also asks the patient whether or not they took the medication every time it tells them they should and records their answer.
+  \item Finally, relatives, caregivers, or other relevant parties can use the Android app to monitor whether or not the patient has been taking the required medications. 
+\end{enumerate}
+
+This structure \& flow is very similar to the desired structure of Smart Prompt. 
+It contains one of the two main points that are a must have for our solution, task completion recording. 
+It also consists of supplementary apps, web \& mobile, for creating, updating, deleting, and monitoring reminders/tasks, which are components that have been planned to be added to Smart Prompt in the future. 
+
+On the other hand, Remembranza is missing two big things that are requirements for Smart Prompt, personalization \& automatic reminders. 
+The personalization is straight-forward, our solution should have some sort of incentive and personalized feel to make the patient more comfortable using it. 
+Automatic reminders are somewhat less straight-forward, but an absolute necessity. 
+The only way a patient can be reminded of what medicine to take with Remembranza is if they remember to ask Alexa what medicine they have to take. 
+So, they are being relieved of having to remember exactly what medicine they need to take, but they are still expected to remember the fact that they have to take something. 
+This is no good, as if they forget they have to take medicine in the first place (a highly likely situation for our user base), Remembranza will never remind them and they will most likely not take their medicine. 
+
+Remembranza was implemented and successfully tested in a laboratory setting, however it was not directly tested by our target user base. 
+As such, there are not many useful takeaways aside from what they set out to do is possible. 
+Overall, Remembranza is a great start towards the solution we are looking for, it just does not quite meet all of our requirements. 
+
+
+
 
 
 \section{Design}
@@ -97,6 +122,8 @@ Here is a complete list of features in Smart Prompt (More details about the feat
  Manually Snooze Reminders & Complete \\
  \hline
  Auto Snooze Reminders & In-Progress \\
+ \hline
+ Web App for Managing Reminders \& Viewing Completion & TBD \\
  \hline
 \end{tabular}
 \end{center}
@@ -438,7 +465,8 @@ For example, to quickly tell Smart Prompt you have completed a task, simply say,
 This can make navigating Smart Prompt, or any other skill, much quicker and simpler. The only thing to take note of with this is that if you do this before granting permissions, the intent will simply not work and it will request that you grant permissions.
 
 \begin{thebibliography}{00}
-\bibitem{b1} reference
+\bibitem{b1} Plassman B, L, Langa K, M, Fisher G, G, Heeringa S, G, Weir D, R, Ofstedal M, B, Burke J, R, Hurd M, D, Potter G, G, Rodgers W, L, Steffens D, C, Willis R, J, Wallace R, B: Prevalence of Dementia in the United States: The Aging, Demographics, and Memory Study. Neuroepidemiology 2007;29:125-132. doi: 10.1159/000109998
+\bibitem{b2} Jesús-Azabal, M., Medina-Rodríguez, J.A., Durán-García, J., García-Pérez, D. (2020). Remembranza Pills: Using Alexa to Remind the Daily Medicine Doses to Elderly. In: García-Alonso, J., Fonseca, C. (eds) Gerontechnology. IWoG 2019. Communications in Computer and Information Science, vol 1185. Springer, Cham. 
 \end{thebibliography}
 
 
