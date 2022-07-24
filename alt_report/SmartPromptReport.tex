@@ -67,7 +67,12 @@ To give more detail, a user is able to create a reminder to go off on a certain 
 Then, when a reminder goes off, the user is notified of the message that they asked the reminder to give, and they can then tell Smart Prompt once they have completed their task in order to mark it as complete. 
 Finally Smart Prompt will send the user's smart phone a push notification alongside each reminder, so that they can see their reminders even if they are not at home. 
 
-Here is a list of features in Smart Prompt (More details about the features not yet implemented will be provided in the Discussion section).
+At a technical level, Smart Prompt consists of two parts: Amazon Alexa as a front end \& Google Firebase Realtime Database as a backend. 
+Let us examine those two parts and how they contribute to this purpose. 
+
+\subsection{Features}
+
+Here is a complete list of features in Smart Prompt (More details about the features not yet implemented will be provided in the Discussion section).
 \begin{center}
 \begin{tabular}{| c | c |}
  \hline
@@ -95,9 +100,6 @@ Here is a list of features in Smart Prompt (More details about the features not 
  \hline
 \end{tabular}
 \end{center}
-
-At a technical level, Smart Prompt consists of two parts: Amazon Alexa as a front end \& Google Firebase Realtime Database as a backend. 
-Let us examine those two parts and how they contribute to this purpose. 
 
 \subsection{Frontend}
 
@@ -311,8 +313,102 @@ Conclusion
 
 \section{Appendix}
 
-provide usage \& testing instructions (write out high level testing procedures, i.e., how did I test), i.e., what's on gh. Use screenshots
+In this section I will provide straight-forward usage and testing instructions for Smart Prompt. 
 
+\subsection{First Use}
+
+Smart prompt requires permissions in order to create reminders for you and refer to you by your given name. As these are core functionalities of the skill, it will require you to grant them right off the bat.
+There are two ways to grant permissions:
+
+\begin{enumerate}
+  \item Have Smart Prompt Ask You:
+First, launch the skill by simply saying
+\begin{center}
+"Alexa, open Smart Prompt"
+\end{center}
+Alexa will then directly ask you to grant permissions. You may approve or decline them, although declining them will simply keep you from using Smart Prompt. Once you approve them, you will have full access to Smart Prompt's features immediately afterwards.
+  \item In the Alexa App:
+If you prefer to accept the permissions manually you may do so by simply opening the Alexa App (mobile or web), navigating to the Skills menu, then Your Skills, then Smart Prompt, then Settings, and finally you can check off the two required permissions.
+As a side note, it is possible to only check off one of the two permissions, although many parts of the skill will be unusable and it will simply request that you grant the necessary permissions.
+\end{enumerate}
+
+Simply ensure that both permissions are granted as such:
+\begin{center}
+  \includegraphics[width=\linewidth * 1/2]{images/skillPermissions.jpg}
+\end{center}
+
+\subsection{Creating a Reminder}
+
+To create a new reminder, simply ask Smart Prompt. First, launch Smart Prompt using the same launch phrase listed above, and then say anything along the lines of
+\begin{center}
+"Create a new reminder"
+\end{center}
+The skill will then prompt you for three pieces of information one by one:
+\begin{itemize}
+    \item Day of the Week, i.e., Monday, Tuesday, etc.
+    \item Time of Day, i.e., 9:00 a.m., Noon, 10:00 p.m., etc.
+    \item Task / Reminder Message, i.e., "Take ", "Walk the dog", "Make Coffee"
+\end{itemize}
+Once you provide these three pieces of information, Alexa will repeat them to you and ask you to confirm that they are correct. If anything was recorded incorrectly, you may simply say no and restart the process. Otherwise, simply say yes and the reminder will be created.
+
+Additionally, you may also expedite the process by providing the day and time from the start. Just say anything along the lines of
+\begin{center}
+"Create a new reminder on Monday at noon"
+\end{center}
+As a side note, it is worth mentioning that you must create the reminder using this method and not throughout the Alexa App. Any reminder created through other means will not be registered with Smart Prompt and will be missing most of the corresponding features.
+
+\subsection{Snoozing a Reminder}
+
+Snoozing a reminder works exactly the same as any other reminder on Alexa. When an alarm goes off, simply say something along the lines of
+\begin{center}
+"Alexa, snooze that reminder for five minutes"
+\end{center}
+
+\subsection{Recording a Reminder as Complete}
+
+As one of the main purposes of Smart Prompt is to be able to track the completion rate of tasks as well as how long they take, it is encouraged to always tell Smart Prompt when you have completed a task it reminded you to do.
+
+To do this, simply launch Smart Prompt and say something along the lines of
+\begin{center}
+"I have completed my task"
+\end{center}
+Upon doing so, Smart Prompt will record the previous reminder that went off as complete as well as how long it was since the reminder first went off (The completion record and duration of time is recorded separately per week for each reminder).
+
+As a side note, do not mention the exact task you completed when performing this action. Smart Prompt is simply unable of recognizing the specific task by name at the moment.
+
+\subsection{Deleting/Updating/Managing Reminders}
+
+Deleting, updating, and generally managing reminders can be handled in exactly the same way as any normal Alexa reminder would be handled. The simplest way is through the Alexa App. All of the basic information of a reminder can be viewed and edited from there.
+\begin{center}
+  \includegraphics[width=\linewidth * 1/2]{images/inAppReminderSettings.jpg}
+\end{center}
+
+Although it is recommended to use the app, you may also ask Alexa about your reminders at any time.
+For example, simply say something along the lines of
+\begin{center}
+"Alexa, what are my reminders"
+
+or 
+
+"Alexa, get rid of my reminder to make coffee"
+\end{center}
+Be mindful when doing this, however, as Alexa itself will not directly differentiate between Smart Prompt reminders and its own reminders.
+
+\subsection{Formatting an Audio File for Playback}
+
+TODO: add audio file formatting instructions (as well as uploading instructions)
+
+\subsection{Extras}
+
+One thing worth noting is that, as with any skill, the launch sequence can be expedited by simply saying,
+\begin{center}
+"Alexa, tell $<skill name>$ $<intent>$"
+\end{center}
+For example, to quickly tell Smart Prompt you have completed a task, simply say,
+\begin{center}
+"Alexa, tell Smart Prompt I have completed the task"
+\end{center}
+This can make navigating Smart Prompt, or any other skill, much quicker and simpler. The only thing to take note of with this is that if you do this before granting permissions, the intent will simply not work and it will request that you grant permissions.
 
 \begin{thebibliography}{00}
 \bibitem{b1} reference
