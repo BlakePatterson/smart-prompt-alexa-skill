@@ -184,6 +184,8 @@ Here is an example of the user completing a reminder:
   \includegraphics[width=\linewidth * 3/4]{images/completedReminder1.jpg}
 \end{center}
 
+For obvious reasons the playing of an audio file cannot be shown here, but if an audio file is stored for a given reminder, it would play in place of this confirmation message. 
+
 Here is an example of the user attempting to complete a reminder when there is nothing to complete:
 \begin{center}
   \includegraphics[width=\linewidth * 3/4]{images/completedReminder2.jpg}
@@ -198,6 +200,13 @@ A new "iteration" of the reminder is stored for each week that it occurs, so if 
 Otherwise, the current iteration will simply be found and the number of snoozes for that iteration will be incremented. 
 Finally, this reminder will be entered as the previous reminder in the database, for the purposes required by the Completed Reminder Intent. 
 
+\subsection{Dialog Model}
+
+In case it is easier to follow, here is a diagram showing the flow in which the user interacts with Smart Prompt during the two main intents: 
+\begin{center}
+  \includegraphics[width=\linewidth * 5/6]{images/dialogModel.jpg}
+\end{center}
+
 \subsection{Backend}
 
 The Firebase Realtime Database, being a NoSQL database, is structured more like a large JSON object than anything else. 
@@ -210,6 +219,21 @@ Moving on, each reminder object contains numerous fields. such as the reminder d
 Each reminder also includes an optional audio file field, which contains the name of an audio file stored in an Amazon S3 bucket (if this field is included, the audio file named will be played when a reminder is recorded as complete).
 The last field in each reminder is the iterations list, with each iteration representing the reminder data for any given week. 
 Each iteration stores the start time (the exact time the reminder first went off), the completion time (if it was completed), whether not it was completed, and the number of times it went off (i.e., number of snoozes that went off). 
+
+Here is a screenshot of a sample reminder in the database: 
+\begin{center}
+  \includegraphics[width=\linewidth * 2/3]{images/databaseEx.png}
+\end{center}
+
+\subsection{System Diagram}
+
+Finally, here is a simple system diagram showing each technology used. 
+Amazon Alexa is at the core of Smart Prompt and it communicates with Google Firebase in order to store the vast majority of data. 
+Amazon S3 is used simply to store the optional audio files to be played at the completion of tasks. 
+\begin{center}
+  \includegraphics[width=\linewidth * 2/3]{images/systemDiagram.jpg}
+\end{center}
+
 
 \section{Evaluation}
 
