@@ -47,7 +47,7 @@ Additionally, you may also expedite the process by providing the day & time from
 "Create a new reminder on Monday at noon"
 ```
 
-As a side note, it is worth mentioning that you must create the reminder using this method and not throught the Alexa App. 
+As a side note, it is worth mentioning that you must create the reminder using this method and not throughout the Alexa App. 
 Any reminder created through other means will not be registered with Smart Prompt & will be missing most of the corresponding features. 
 
 ## Snoozing a Reminder
@@ -86,6 +86,38 @@ or
 ```
 
 Be mindful when doing this, however, as Alexa itself will not directly differentiate between Smart Prompt reminders and its own reminders. 
+
+## Audio Files
+As mentioned prior, one optional component of Smart Prompt is to have a custom audio file play when you record a task as complete. 
+Anything from a favorite song to a clip of a loved one offering congratulatory words, whatever motivates the user to complete their task can be played. 
+There are two steps to setting this up. 
+
+### 1. Audio File Formatting
+Any standard MP3 file can be used with Smart Prompt, but there is some formatting it must go through prior to uploading it, otherwise Alexa will simply not play it. 
+[Here is a link](https://developer.amazon.com/en-US/docs/alexa/custom-skills/speech-synthesis-markup-language-ssml-reference.html#h3_converting_mp3) directly to Amazon's instructions on audio formatting. 
+They provide two methods, a command line tool as well as Audacity (a popular & free audio editing software), but it is highly recommended to use Audacity as it is more straight-forward and reliable. 
+[Here is a link](https://youtu.be/pKlnpf0SsoE?t=116) to a youtube video describing to steps to format the file in Audacity. 
+Essentially, you just need to open your MP3 file in Audacity, set the project rate to 16,000, go to File, then Export, set the save type to MP3, set the bit rate mode to constant, and finally set the quality to 48 kbps. 
+With all of that done you can save this new MP3 file and the formatting is complete. 
+
+### 2. Uploading to S3 & Linking to DB
+With your formatted MP3 in hand, there are only two things left to do. 
+First, you must upload the file to the Amazon S3 Bucket tied to Smart Prompt. 
+To do this, simply open Smart Prompt in the Amazon Developer Console, navigate to the code tab, and click on S3 Storage in the toolbar at the top. 
+This will open the S3 Management Console in a new tab, and from here you may simply click upload and drag and drop your MP3 file. 
+
+Finally, you just need to add the MP3 file name to whichever reminders you would like it to play for in the database. 
+To do this, open Smart Prompt in the Firebase Console and navigate to the Realtime Database. 
+From here, find your user and expand it, and then find your reminder and expand it. 
+Then, simply add the following field to the reminder object
+```
+audioFile: <file_name>.mp3
+```
+Make sure the field name is spelled correctly as well as the file name, and then you are good to go. 
+The next time you record this reminder as complete, the audio file will be played as a reward. 
+You may also add this audio file to as many reminders as you would like. 
+
+As a final side note, an easier, more streamlined, and more secure way of uploading and managing audio files will be implemented in the future. 
 
 ## Extras
 One thing worth noting is that, as with any skill, the launch sequence can be expedited by simply saying, 
