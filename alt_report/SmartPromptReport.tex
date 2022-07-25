@@ -22,7 +22,7 @@
 \maketitle
 
 \begin{abstract}
-Smart Prompt is an Alexa Skill aimed at helping those with memory issues keep better track of their daily/weekly tasks that they may otherwise forget to complete. 
+Smart Prompt is an Alexa Skill aimed at helping elderly patients with memory ailments keep better track of their daily/weekly tasks that they may otherwise forget to complete. 
 It also keeps a record of those tasks and their completion times to better inform the individual and/or caregivers of how often the individual completes their tasks as well as how long it takes them. 
 \end{abstract}
 
@@ -330,7 +330,7 @@ Amazon S3 is used simply to store the optional audio files to be played at the c
 In this section we will examine other projects and commercial solutions related to Smart Prompt, and see how Smart Prompt compares to them. 
 Surprisingly, there are no notable \& commercially available solutions that are directly comparable to Smart Prompt, so we will focus on existing Amazon reminders, other general reminder/task management solutions, and other dementia related health solutions (not specifically task management). 
 
-\subsection{Alexa Reminders}
+\subsection{Core Alexa Reminders}
 
 What becomes immediately evident upon researching the topic of Alexa reminders, and even more so specifically for users with memory ailments, is that the reminder system built into every Alexa device remains the king of this category. 
 It is, admittedly, a well fleshed out, useful system that would fulfill most peoples wishes when making a reminder. 
@@ -361,11 +361,21 @@ It does not care in the slightest about what happens after the reminder goes off
 Another, somewhat simpler issue is that Alexa completely lacks personalization. 
 For a younger person that is more tech savvy, they are probably happy with a more blunt, to the point Alexa conversation. 
 However, our target user base is much older and did not grow up with technology like Alexa. 
-Thus, to make using our solution feel less like talking to a robot and more like a personal experience, it is a requirement that it contains personalization. 
-Not only would personalization make the transition into using the solution as well as the general experience better, but it would provide more incentive into using the solution and completing your reminders. 
-For example, if the solution were able to refer to the user by name and play a custom clip of a family member greeting them upon completing a reminder, then the user would most definitely be more likely to complete a reminder and continue to use our solution than if they simply received nothing but monotone instructions from a device. 
+Thus, this lack of personalization could be the difference between an elderly patient using our skill and not. 
 
-In short, although Alexa has a well built reminder system already, it is lacking some core requirements we are looking for in our solution. 
+Now let us compare all of this to Smart Prompt. 
+Smart Prompt's basic reminder system is much more simple, only allowing the creation of weekly recurring reminders, although viewing, updating, and deleting the reminders is equally as fleshed out as core Alexa reminders. 
+Additionally, support for the creation of other types of reminders is not very difficult, simply time consuming, so this downfall could be gotten rid of fairly simply. 
+The conversation model for Smart Prompt, i.e., the way in which things are phrased by the user as well as the device, is fairly fleshed out as well. 
+It is by no means perfect, but the user can phrase any of their prompts in many different ways, similar to core Alexa functionalities allow for. 
+Next, Smart Prompt solves the recording issue. 
+Not only does it record when a reminder goes off, but it also records when the user records it as complete, allowing for full tracking of when they completed a task as well as how long it took them. 
+It also records how many times the alarm went off in this period of time, allowing for the user to see how many times they snoozed a reminder before completing a task. 
+Finally, Smart Prompt also solves the personalization issue. 
+Not only does it refer to the user by name, but it also allows the user to choose for any custom audio file to be played when they record an audio file as complete. 
+This not only further humanizes the user's interactions with Smart Prompt, but also further incentivizes them to complete their tasks. 
+
+In short, Alexa reminders still have a slight edge over Smart Prompt in the basics, but Smart Prompt provides clean solutions to two of the biggest shortcomings of core Alexa Reminders. 
 
 \subsection{Other Reminder Solutions}
 
@@ -391,12 +401,48 @@ put noteworthy things here, i.e., the very similar project that never came to be
 
 \section{Discussion}
 
-Discuss what couldn't be finished, difficulties, next steps, etc. (specifically go into detail about how to implement the auto snoozing)
+In this section we will discuss what could not be finished with Smart Prompt and how it could be improved. 
+
+The first feature of Smart Prompt that could not yet be implemented yet is a must have is auto snoozing. 
+Currently, the user is able to ask for a reminder to be snoozed when it goes off, or even just manually change the time of a reminder, although that is not enough. 
+Considering there is always a good chance the user is occupied when a reminder goes off, doing something such as getting the mail, taking a nap, or running errands, it is not good enough for the reminder to go off once and then never again without any intervention. 
+The user's smart phone does get a push notification whenever a reminder goes off, but considering our user base is not very tech-savvy, this is also not good enough of a solution. 
+Ideally, whatever reminder the user has set for the day would automatically snooze itself and continue to go off for a set number of times until the user records it as complete. 
+For example, if a patient is supposed to take medication, we could make the reminder go off three or more separate times, ten minutes apart, or until the user records it as complete (also, this is somewhat beyond the current scope of Smart Prompt, but this is where a notification could be sent to a care giver to alert them of the patient's inability to complete their task).
+
+Logically, this sounds like a fairly simple thing. 
+However, technically, this is not simple in the slightest. 
+Alexa has a fairly sound reminder API system set up that allows for creating, updating, and deleting reminders seamlessly, and it is used throughout Smart Prompt as a whole. 
+It also allows the Smart Prompt Lambda server to listen for when a reminder goes off \& execute a custom function at that time (which is how some of the core operations of Smart Prompt are performed).
+However, communicating with this API requires permissions, i.e., the ones granted on first use of Smart Prompt. 
+Normally, this is not an issue, however, these permissions are not accessible from the function that executes when a reminder goes off. 
+The Lambda server simply does not have access to that data at that time. 
+For this reason, it is not possible to update a reminder when it goes off, preventing us from automatically snoozing it for some amount of time. 
+The next viable method is to simply create multiple reminders for each task, with each succeeding one serving as a snooze. 
+Again, this is not do-able inside of the reminder started function, so all of the snoozes must be created at the same time as the original alarm. 
+This is do-able, although makes for management of the reminders in the database much more of a pain. 
+Essentially, each reminder object needs to also contain a list of reminders to serve as snoozes. 
+Additionally, however, we also need to be able to find the parent reminder for any given snooze reminder given just the ID of the snooze reminder, making simply storing the snooze reminder IDs in a list inside of each parent reminder not feasible. 
+All of these issues lead to a very complex problem, and it simply was not able to be solved in the time allocated for development. 
+
+The next feature was never planned to be finished in the initial development cycle, but is vital to the end product, and that is a web/mobile app for monitoring \& managing reminders. 
+Essentially, it is vital for the patient, care giver(s), doctor(s), etc., to be able to login to a simple app to view a list of reminders for a given patient as well as if each of them have been completed. 
+At the moment this data is still simply being stored in the database, and this is not viable as an end product for obvious reasons. 
+Additionally, the user of this web/mobile app should be able to set up new reminders for the patient, update and/or delete reminders, upload audio files for different reminders, and other miscellaneous tasks. 
+As this is a fairly straight-forward app, there is not much else to discuss here other than how this could be implemented. 
+Luckily, the same backend can, and should be used for this web/mobile app, so there is no required work there. 
+Firebase Realtime Database is capable of being fully connected to any web app (in the same way it is connected to Smart Prompt already), native iOS app, or native Android app, so there are no limitations there. 
+In terms of frontend, the obvious choice would be something along the lines of React Native or Ionic. 
+These are web development frameworks that allow for easy creation of responsive web apps that can not only be compiled into native mobile apps and put onto the Apple App Store \& Google Play Store, but can also simply be run as plain web apps, allowing for one consistent app to be created for all platforms. 
+The only foreseen complication here is how to create, update, and delete reminders from this web/mobile app. 
+As mentioned prior, Alexa uses a special API for managing reminders, and this API requires special permissions that are granted through Alexa itself. 
+There are even some parts within Alexa that do not have access to these permissions and as such cannot make requests to the reminders API, so it may not even be possible for this hypothetical web/mobile app to make any. 
+It is still worth looking into as it would be a vital feature, but it is worth noting that it may not even be feasible. 
 
 
 \section{Conclusion}
 
-Conclusion
+In conclusion, 
 
 
 \section{Appendix}
