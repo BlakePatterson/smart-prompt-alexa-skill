@@ -1,0 +1,28 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{}%
+\contentsline {section}{\numberline {2}Related Work}{1}{}%
+\contentsline {subsection}{\numberline {2.1}Feasibility Studies}{1}{}%
+\contentsline {subsection}{\numberline {2.2}Design \& Discussion Studies}{3}{}%
+\contentsline {subsection}{\numberline {2.3}Remembranza Pills}{4}{}%
+\contentsline {section}{\numberline {3}Design}{5}{}%
+\contentsline {subsection}{\numberline {3.1}Features}{5}{}%
+\contentsline {subsection}{\numberline {3.2}Frontend}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Launch Request}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Create Reminder Intent}{7}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}Completed Reminder Intent}{11}{}%
+\contentsline {subsubsection}{\numberline {3.2.4}Reminder Started Event}{12}{}%
+\contentsline {subsection}{\numberline {3.3}Dialog Model}{13}{}%
+\contentsline {subsection}{\numberline {3.4}Backend}{13}{}%
+\contentsline {subsection}{\numberline {3.5}System Diagram}{14}{}%
+\contentsline {section}{\numberline {4}Evaluation}{15}{}%
+\contentsline {subsection}{\numberline {4.1}Core Alexa Reminders}{15}{}%
+\contentsline {subsection}{\numberline {4.2}Other Reminder Solutions}{17}{}%
+\contentsline {section}{\numberline {5}Discussion}{18}{}%
+\contentsline {section}{\numberline {6}Conclusion}{19}{}%
+\contentsline {section}{\numberline {7}Appendix}{20}{}%
+\contentsline {subsection}{\numberline {7.1}First Use}{20}{}%
+\contentsline {subsection}{\numberline {7.2}Creating a Reminder}{21}{}%
+\contentsline {subsection}{\numberline {7.3}Snoozing a Reminder}{22}{}%
+\contentsline {subsection}{\numberline {7.4}Recording a Reminder as Complete}{22}{}%
+\contentsline {subsection}{\numberline {7.5}Deleting/Updating/Managing Reminders}{22}{}%
+\contentsline {subsection}{\numberline {7.6}Formatting \& Uploading an Audio File for Playback}{24}{}%
+\contentsline {subsection}{\numberline {7.7}Extras}{25}{}%
