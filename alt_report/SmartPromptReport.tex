@@ -96,8 +96,32 @@ While much of this does not directly related to the topic of reminding patients 
 Overall, studies have shown that Alexa is surprisingly easy to pick up for elderly dementia patients, ends up being more helpful than they expect (even if it is in ways they did not intend), and can truly increase their quality of life by reminded them of things such as taking medicine. 
 While there are definite cases of patients not getting used to Alexa, not finding it helpful, or just outright being against it, these results show that something like Smart Prompt is not only feasible, but likely to help many patients. 
 
+\subsection{Design \& Discussion Studies}
+
+Next let us examine two studies that discuss different aspects of using Alexa for dementia patients and focus more on the conclusions they draw that can help us design Smart Prompt. 
+
+The first study here focuses on the broad category of intelligent cognitive assistants rather than Alexa specifically, and discusses the results of their focus groups to conclude on how to design a better intelligent cognitive assistant \cite{b7}.
+Much like the other studies, they conducted three focus groups that simply consisted of dementia patients as well as their family members interacting with and using an intelligent cognitive assistant. 
+Much of the details about the study and many of the findings remain similar to the other studies so it is not worth repeating, although there is one major conclusion worth bringing up. 
+Seemingly one of the most important aspects of an intelligent cognitive assistant is personalization, just as we intend to implement with Smart Prompt. 
+Essentially, they came to the conclusion that every patient was unique \& had different needs and wants (as any person does), and so to design a good assistant, it would need to be able to adapt to those different needs and wants. 
+They go into some detail about how to personalize the assistant that goes beyond what is planned for Smart Prompt, although this further validates that personalization is an important feature for our solution. 
+
+The other study is focused more on evaluating existing chat bots, as they call them, for dementia care \cite{b5}. 
+Although chat bot is often not a term used to refer to an Alexa Skill, five of the six that they examined were Alexa Skills. 
+Many of these skills were focused more on providing information about dementia rather than providing aid to a dementia patient, although there are still some useful findings here. 
+Again, one of their biggest conclusions validates our need for personalization, the need for a human feel. 
+They even go as far as to say that one of the skills passed the Turing test, and although that is a bit of a stretch, it is important to acknowledge that the more the user feels they are talking to a human, the more comfortable they will be. 
+They also acknowledge that a human feeling chat bot that cannot do its job does not provide much benefit, so it still needs to serve some purpose and do it well, but they further stressed the importance of the human feel. 
+The other main thing they stressed was the backing of a skill with evidence. 
+This makes more sense for the information providing skills they were examining, although it is worth taking into account for Smart Prompt. 
+The more evidence and concrete data we take into account when building Smart Prompt, the more useful it will be to patients. 
+
+Overall, these studies further show that personalization is a must have for Smart Prompt, and we should continue to further humanize the skill as much as possible. 
+
 \subsection{Remembranza Pills}
 
+Finally, let us examine a real project. 
 Remembranza Pills \cite{b3} is very similar to Smart Prompt in that it is an Alexa Skill built to help elderly patients remember to take their medicine. 
 It works in three main stages: 
 \begin{enumerate}
@@ -120,14 +144,6 @@ This is no good, as if they forget they have to take medicine in the first place
 Remembranza was implemented and successfully tested in a laboratory setting, however it was not directly tested by our target user base. 
 As such, there are not many useful takeaways aside from what they set out to do is possible. 
 Overall, Remembranza is a great start towards the solution we are looking for, it just does not quite meet all of our requirements. 
-
-
-
-
-
-
-
-
 
 
 \section{Design}
@@ -519,8 +535,6 @@ URL: https://www.jmir.org/2021/6/e25006
 DOI: 10.2196/25006
 \bibitem{b6} Shu, S., \& Woo, B. K. (2021). Use of technology and social media in dementia care: Current and future directions. World journal of psychiatry, 11(4), 109–123. https://doi.org/10.5498/wjp.v11.i4.109
 \bibitem{b7} Wolters, M. K., Kelly, F., \& Kilgour, J. (2016). Designing a spoken dialogue interface to an intelligent cognitive assistant for people with dementia. Health Informatics Journal, 854–866. https://doi.org/10.1177/1460458215593329
-
 \end{thebibliography}
-
 
 \end{document}
